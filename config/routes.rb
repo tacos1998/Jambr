@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   
   get 'callback' => 'static_pages#callback'
   
-  get 'songs'     => 'static_pages#songs'
+  get 'songs'    => 'static_pages#songs'
+  
+  get 'play'  => 'static_pages#play' 
 end

@@ -13,4 +13,7 @@ class StaticPagesController < ApplicationController
   
   def songs
   end
+  
+  def play
+  end
 end

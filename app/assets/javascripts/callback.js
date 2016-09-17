@@ -25,6 +25,10 @@ function spotifyLogin() {
 	window.addEventListener("message", receiveMessage, false);
 }
 
+function spotifyLogout() {
+	window.location = "/";
+}
+
 function getLoginURL() {
 	return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID
 		+ '&redirect_uri=' + encodeURIComponent("https://hackisu-tacos1998.c9users.io/callback/")
@@ -34,7 +38,10 @@ function getLoginURL() {
 
 function receiveMessage(event) {
   console.log("event stuff", event.data);
-  window.location = "/songs?access_token=" + JSON.parse(event.data).access_token;
+	Turbolinks.visit("/songs");
+	document.addEventListener("turbolinks:load", function() {
+		songs(JSON.parse(event.data).access_token);
+	});
 }
 
 function loginCallback() {

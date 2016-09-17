@@ -1,0 +1,31 @@
+<div>
+  <%= icon('clock-o', class: 'big-icon') %>
+  <%= icon('sun-o', class: 'big-icon') %>
+  <%= icon('smile-o', class: 'big-icon') %>
+</div>
+<div class="col-md-4">
+  <select multiple class="form-control">
+    <option selected id="special-time"><%= Time.now.in_time_zone("Central Time (US & Canada)").strftime("%l:%M %p") %></option>
+  </select>
+  <%# content_tag(:btn, Time.now.in_time_zone("Central Time (US & Canada)").strftime("%l:%M %p"), class: "btn btn-lg btn-default time-param") %>
+</div>
+<div class="col-md-4">
+  <select multiple class="form-control">
+    <option selected disabled id="opt-disabled">weather</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+</div>
+<div class="col-md-4">
+  <select multiple class="form-control">
+    <option selected disabled id="opt-disabled">mood + genre</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+</div>
+<p class="info">use ctrl-click (⌘-click on ) or tap on mobile to select multiple items</p>
+<%# select_tag 'recipients', recipients_options(@chosen_recipient), required: false, multiple: true, class: 'form-control chosen-it' %>
