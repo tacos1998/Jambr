@@ -34,7 +34,7 @@ function getLoginURL() {
 
 function receiveMessage(event) {
   console.log("event stuff", event.data);
-  window.location = "/main?access_token=" + JSON.parse(event.data).access_token;
+  window.location = "/songs?access_token=" + JSON.parse(event.data).access_token;
 }
 
 function loginCallback() {
