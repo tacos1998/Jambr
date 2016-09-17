@@ -16,5 +16,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require spotify
-//= require main
+//= require callback
 //= require_tree .

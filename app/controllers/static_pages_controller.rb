@@ -7,4 +7,10 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+  
+  def callback
+  end
+  
+  def songs
+  end
 end

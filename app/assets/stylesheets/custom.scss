@@ -34,6 +34,15 @@ body {
 #logo {
   color: white;
   text-align: center;
+  font-size: 80px;
+  &:hover {
+    color: #F8F8F8;
+  }
+}
+
+#spotify-login {
+  color: white;
+  text-align: center;
   font-size: 60px;
   &:hover {
     color: #F8F8F8;
@@ -69,4 +78,11 @@ footer {
   h1 {
     display: inline;
   }
+}
+
+table, th, td {
+  border: 1px solid white;
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font: white;
 }
