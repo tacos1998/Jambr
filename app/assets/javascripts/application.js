@@ -15,4 +15,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require spotify
+//= require main
 //= require_tree .
