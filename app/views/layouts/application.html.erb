@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>Jambr</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%# put it here Kat %>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Lobster|Yatra+One" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <%= link_to content_tag(:h1, "Jambr", class: "float_center", id: "logo"), root_path %>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+  </nav>
 <%= yield %>
-
+  <footer class="footer">
+    <div class="fix-to-bottom">
+      <%= link_to content_tag(:h1, "Help", class: "center info-btn"), help_path %>
+      <%= link_to content_tag(:h1, "About", class: "center info-btn"), about_path %>
+    </div>
+  </footer>
 </body>
 </html>
