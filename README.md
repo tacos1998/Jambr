@@ -25,7 +25,7 @@ Port to iOS/Android
 
 Known Issues (to be fixed in future versions):
 *The resulting playlist will only use the songs that have been loaded in the Jambr web-app. The user must page
-through all of his/her songs if he/she wishes to include them in the personalized playlist*
+through all of his/her songs if he/she wishes to include them in the personalized playlist.*
 *Refreshing the page results in a blank table.* In order to restart the process, the user must logout and login again
 The tags are not exactly accurate, in this current version of Jambr
 Not as responsive in Apple OS
