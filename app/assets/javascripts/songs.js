@@ -1,7 +1,7 @@
 var spotifyApi;
 var accessToken;
 var playlist;
-var originalTableHTML = $("#songs").html();
+var originalTableHTML = "<tr><th></th><th>Songs</th><th>Artist</th><th>Album</th><th>Tags</th></tr>"
 var page = 0;
 localStorage.setItem("tracks", "");
 function songs(newPage) {
@@ -47,7 +47,7 @@ function displaySongs(songs) {
     rowHTML += "<td>" + name + "</td>";
     rowHTML += "<td>" + artists + "</td>";
     rowHTML += "<td>" + album + "</td>";
-    rowHTML += "<td>Tags:<span id='submitted_" + track.id + "'></span><br><input type='text' class='special-box' id='tags_" + track.id + "'><input type='submit' class='special-btn' value='Submit' onclick='submitTag(\"" + track.id + "\");'></td>";
+    rowHTML += "<td>Tags:<span id='submitted_" + track.id + "'></span><br><input type='text' class='special-box text-center' id='tags_" + track.id + "' placeholder='add tags (optional)'><input type='submit' class='special-btn' value='Submit' onclick='submitTag(\"" + track.id + "\");'></td>";
     rowHTML += "</tr>";
     tableHTML += rowHTML;
     

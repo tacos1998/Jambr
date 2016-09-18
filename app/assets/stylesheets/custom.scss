@@ -58,6 +58,11 @@ body {
     width: 300px;
     font-size: 60px;
   }
+  @media(max-width: 330px) {
+    width: 300px;
+    margin-left: -5px;
+    font-size: 60px;
+  }
 }
 
 #slogan {
@@ -106,7 +111,7 @@ footer {
 }
 
 table, th, td {
-  border: 1px solid white;
+  border-bottom: 2px solid white;
   text-align: center;
   font-family: 'Amatic SC', cursive;
   color: white;
@@ -194,12 +199,20 @@ i {
 }
 
 .special-btn {
+  height: 39px;
   font-size: 21px;
+  margin-bottom: 11px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .special-box {
+  height: 38px;
   line-height: 30px;
   font-size: 20px;
+  margin-bottom: 12px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .special-box-other-one {
