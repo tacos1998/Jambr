@@ -2,6 +2,8 @@
   <li><a onclick="back();"><<</a></li>
   <li><a onclick="forward();">>></a></li>
 </ul>
-<table style="width:100%" id="songs">
-</table>
+<div class="table-responsive">
+  <table style="width:100%" id="songs">
+  </table>
+</div>
 <%= link_to content_tag(:h1, "jam on", class: "center info-btn", id: "goto-play"), play_path %>
