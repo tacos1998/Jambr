@@ -202,10 +202,26 @@ i {
   font-size: 20px;
 }
 
+.special-box-other-one {
+  line-height: 30px;
+  font-size: 20px;
+  width: 200px;
+  text-align: center;
+}
+
 #goto-play {
   border: 2px solid white;
   border-radius: 100000px;
   width: 80px;
+  text-align: center;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+#goto-party {
+  border: 2px solid white;
+  border-radius: 100000px;
+  width: 120px;
   text-align: center;
   display: inline-block;
   padding-bottom: 4px;

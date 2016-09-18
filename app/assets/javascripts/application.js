@@ -16,5 +16,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require spotify
+//= require audio_analysis
+//= require playlist
 //= require callback
 //= require_tree .

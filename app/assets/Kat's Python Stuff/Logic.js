@@ -76,7 +76,7 @@ function Style(acousticness, instrumentalness, mode, time_signature, energy, dan
         }
     }
     if (acousticness <=.2){
-        styles.push("electronic");
+        styles += ["electronic"];
     }
     return styles;
 }

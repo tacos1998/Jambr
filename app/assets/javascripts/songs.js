@@ -1,24 +1,35 @@
 var spotifyApi;
 var accessToken;
 var playlist;
-function songs(accessToken) {
-  
-  spotifyApi = new SpotifyWebApi();
-  spotifyApi.setAccessToken(accessToken);
-  spotifyApi.getMySavedTracks() // note that we don't pass a user id
+var originalTableHTML = $("#songs").html();
+var page = 0;
+localStorage.setItem("tracks", "");
+function songs(newPage) {
+  console.log(newPage);
+  Spotify.getMySavedTracks({offset: newPage * 20, limit: 20}) // note that we don't pass a user id
   .then(function(data) {
     displaySongs(data.items);
   }, function(err) {
     console.error(err);
   });
 }
-songs();
+
+function back() {
+  if(page > 0) {
+    page--;
+    songs(page);
+  }
+}
+
+function forward() {
+  page++;
+  songs(page);
+}
 
 function displaySongs(songs) {
-  console.log(songs);
-  var tableHTML = $("#songs").html();
+  var trackIds = JSON.parse(localStorage.getItem("tracks") || "[]");
+  var tableHTML = originalTableHTML;
   for(let song of songs) {
-    console.log(song);
     let track = song.track;
     let name = track.name;
     let artists = "";
@@ -26,6 +37,9 @@ function displaySongs(songs) {
       artists += artist.name + " ";
     }
     let album = track.album.name;
+    if(trackIds.indexOf(track.id) == -1) {
+      trackIds.push(track.id);
+    }
     
     var rowHTML = "<tr>";
     var imgHTML = "<img src='" + track.album.images[0].url + "' style='width: 64px; height: 64px;'>";
@@ -37,12 +51,17 @@ function displaySongs(songs) {
     rowHTML += "</tr>";
     tableHTML += rowHTML;
     
-    spotifyApi.getAudioFeaturesForTrack(track.id).then(function(data) {
-      console.log(name, data);
+    Spotify.getAudioFeaturesForTrack(track.id).then(function(data) {
+      var mood = Mood(data);
+      var style = Style(data);
+      var autoTags = mood.concat(style);
+      saveAutoTags(track.id, autoTags);
+      displayTags(track.id);
     }, function(err) {
       console.error(err);
     });
   }
+  localStorage.setItem("tracks", JSON.stringify(trackIds));
   
   $("#songs").html(tableHTML);
   
@@ -62,18 +81,39 @@ function submitTag(trackId) {
 function saveTag(trackId, newTag) {
   var savedTags = localStorage.getItem("tags_" + trackId) || "[]";
   savedTags = JSON.parse(savedTags);
-  savedTags.push(newTag);
+  savedTags.push(newTag.toLowerCase());
   localStorage.setItem("tags_" + trackId, JSON.stringify(savedTags));
+}
+
+function saveAutoTags(trackId, autoTags) {
+  localStorage.setItem("autotags_" + trackId, JSON.stringify(autoTags));
 }
 
 function displayTags(trackId) {
   var savedTags = localStorage.getItem("tags_" + trackId) || "[]";
+  var savedAutoTags = localStorage.getItem("autotags_" + trackId) || "[]";
   savedTags = JSON.parse(savedTags);
+  savedAutoTags = JSON.parse(savedAutoTags);
   var submittedHTML = "";
+  for(let tag of savedAutoTags) {
+    submittedHTML += "<span class='badge'>" + tag + " <a onclick='deleteAutoTag(\"" + trackId + "\", \"" + tag + "\");'>x</a></span>";
+  }
   for(let tag of savedTags) {
     submittedHTML += "<span class='badge'>" + tag + " <a onclick='deleteTag(\"" + trackId + "\", \"" + tag + "\");'>x</a></span>";
   }
   $("#submitted_" + trackId).html(submittedHTML);
+}
+
+function deleteAutoTag(trackId, tag) {
+  var savedTags = localStorage.getItem("tags_" + trackId) || "[]";
+  savedTags = JSON.parse(savedTags);
+  for(let i = 0; i < savedTags.length; i++) {
+    if(savedTags[i] == tag) {
+      savedTags.splice(i, 1);
+    }
+  }
+  localStorage.setItem("tags_" + trackId, JSON.stringify(savedTags));
+  displayTags(trackId);
 }
 
 function deleteTag(trackId, tag) {

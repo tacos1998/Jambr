@@ -9,6 +9,7 @@ var SCOPES = [
 	"user-follow-read",
 	"user-follow-modify"
 ]
+var Spotify = new SpotifyWebApi();
 
 function spotifyLogin() {
   var loginURL = getLoginURL();
@@ -39,8 +40,9 @@ function getLoginURL() {
 function receiveMessage(event) {
   console.log("event stuff", event.data);
 	Turbolinks.visit("/songs");
-	document.addEventListener("turbolinks:load", function() {
-		songs(JSON.parse(event.data).access_token);
+	$(document).one("turbolinks:load", function() {
+		Spotify.setAccessToken(JSON.parse(event.data).access_token);
+		songs(0)
 	});
 }
 

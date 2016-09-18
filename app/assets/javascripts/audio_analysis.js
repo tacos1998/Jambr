@@ -1,8 +1,13 @@
-function Mood(danceability, energy, mode, tempo, valence){
+function Mood(features) {
+    var danceability = features.danceability;
+    var energy = features.energy;
+    var mode = features.mode;
+    var tempo = features.tempo;
+    var valence = features.valence;
    var mood = [];
     if (valence >= .5){
         if (mode===1){
-            mood += ['happy'];
+            mood.push('happy');
             if (energy >=  .5){
                 if (danceability >= .5){
                     if (tempo >= 108){
@@ -10,13 +15,12 @@ function Mood(danceability, energy, mode, tempo, valence){
                     }
                 }
             }else{
-                mood += mood.push("love song");
+                mood.push("love song");
             }
         }
-        return mood;
     }else{
         if (mode===1){
-            mood.push("melancholy");
+            mood.push("mellow");
             if (energy >= .5){
                 mood.push("intense");
                 if (danceability >= .5){
@@ -35,13 +39,19 @@ function Mood(danceability, energy, mode, tempo, valence){
             }else{
                 mood.push("sad");
             }
-        return mood;
         }
     }
+    return mood;
 }
 
 
-function Style(acousticness, instrumentalness, mode, time_signature, energy, danceability){
+function Style(features){
+    var acousticness = features.acousticness;
+    var instrumentalness = features.instrumentalness;
+    var mode = features.mode;
+    var time_signature = features.time_signature;
+    var energy = features.energy;
+    var danceability = features.danceability;
     var styles = [];
     if (acousticness >= .90){
         styles.push("acoustic");
@@ -76,7 +86,7 @@ function Style(acousticness, instrumentalness, mode, time_signature, energy, dan
         }
     }
     if (acousticness <=.2){
-        styles.push("electronic");
+        styles.push("electric");
     }
     return styles;
 }
