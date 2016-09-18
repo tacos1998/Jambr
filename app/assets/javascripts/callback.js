@@ -32,7 +32,7 @@ function spotifyLogout() {
 
 function getLoginURL() {
 	return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID
-		+ '&redirect_uri=' + encodeURIComponent("https://hackisu-tacos1998.c9users.io/callback/")
+		+ '&redirect_uri=' + encodeURIComponent("https://floating-meadow-12303.herokuapp.com/callback/")
 		+ '&scope=' + encodeURIComponent(SCOPES.join(" "))
 		+ '&response_type=token';
 }
