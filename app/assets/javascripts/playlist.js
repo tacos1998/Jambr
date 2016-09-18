@@ -85,13 +85,13 @@ function getTimeOfDay() {
     var date = new Date();
     var hours = date.getHours();
     if(hours >= 5 && hours < 12) {
-        return "morning"
+        return "morning";
     }
     else if(hours >= 12 && hours < 19) {
         return "afternoon";
     }
     else {
-        return "night"
+        return "night";
     }
 }
 

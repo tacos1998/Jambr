@@ -1,5 +1,4 @@
 /* global module */
-'use strict';
 var SpotifyWebApi = (function() {
 
   var _baseUri = 'https://api.spotify.com/v1';
