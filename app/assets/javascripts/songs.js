@@ -43,13 +43,13 @@ function displaySongs(songs) {
     
     var rowHTML = "<tr>";
     var imgHTML = "<img src='" + track.album.images[0].url + "' style='width: 64px; height: 64px;'>";
-    rowHTML += "<td>" + imgHTML + "</td>"
+    rowHTML += "<td>" + imgHTML + "</td>";
     rowHTML += "<td>" + name + "</td>";
     rowHTML += "<td>" + artists + "</td>";
     rowHTML += "<td>" + album + "</td>";
     rowHTML += "<td>Tags:<span id='submitted_" + track.id + "'></span><br><input type='text' class='special-box text-center' id='tags_" + track.id + "' placeholder='add tags (optional)'><input type='submit' class='special-btn' value='Submit' onclick='submitTag(\"" + track.id + "\");'></td>";
     rowHTML += "</tr>";
-    tableHTML += rowHTML;
+    tableHTML += rowHTML; 
     
     Spotify.getAudioFeaturesForTrack(track.id).then(function(data) {
       var mood = Mood(data);
