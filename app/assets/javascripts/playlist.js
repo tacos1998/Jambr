@@ -54,8 +54,8 @@ function createPlaylist() {
 }
 
 function openPlaylist(username, playlist) {
-	var width = 450,
-	height = 730,
+	var width = 1000,
+	height = 800,
 	left = (screen.width / 2) - (width / 2),
 	top = (screen.height / 2) - (height / 2);
 
